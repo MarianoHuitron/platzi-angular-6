@@ -1,0 +1,45 @@
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      Nueva Solicitud
+      <a class="closeButton" (click)="close()">x</a>
+    </div>
+    <div class="modal-body" style="height: auto;">
+      <div class="row" *ngIf="sender">
+        <div class="col-md-3">
+          <img [src]="sender.avatar || 'assets/img/generic_avatar.png'" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-9">
+          <b>{{sender.nick}} </b>
+          <small>Te ha enviado una solicitud</small>
+          <br>
+          <small> {{sender.email}} </small>
+          <br>
+          <b>Mensaje</b>
+          <textarea readonly cols="10" rows="5" class="form-control" >
+            {{currentRequest.message}}
+          </textarea>
+          <br>
+        </div>
+        <hr>
+        <div class="col-md-12">
+          <h4>Deseas agregar esta persona?</h4>
+          <br>
+          <input type="radio" name="addToMsn" [(ngModel)]="shouldAdd" value="yes" id="add-yes">
+          <label for="add-yes">Si, agregar</label>
+          <br>
+          <input type="radio" name="addToMsn" [(ngModel)]="shouldAdd" value="no" id="add-no">
+          <label for="add-no">No agregar</label>
+          <br>
+          <input type="radio" name="addToMsn" [(ngModel)]="shouldAdd" value="later" id="add-later">
+          <label for="add-later">Después</label>
+        </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="btn btn-primary" (click)="accept()">Ok</a>
+      <a class="btn btn-default" (click)="close()">Cerrar</a>
+    </div>
+  </div>
+</div>
